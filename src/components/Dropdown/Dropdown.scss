@@ -1,0 +1,76 @@
+@import '../../styles/variables.scss';
+
+.base-container {
+  width: 300px;
+  position: relative;
+  margin-left: 20px;
+}
+
+.base-select {
+  font-size: 14px;
+  font-weight: 700;
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid $border-main;
+  background-color: $white;
+  cursor: pointer;
+  outline: none;
+  padding: 0 12px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  transition: border 0.3s, outline 0.3s;
+  position: relative;
+
+  &:hover {
+    border: 1px solid $border-second;
+  }
+
+  &.base-select-open {
+    outline: 1px solid $outline;
+  }
+
+}
+
+.options {
+  background-color: $white;
+  border: 1px solid $border-main;
+  border-radius: 5px;
+  width: 100%;
+  padding-left: 0;
+
+  max-height: 200px;
+  overflow-y: auto;
+  list-style-type: none;
+
+  margin-top: 4px;
+  box-shadow: 0px 2px 15px 0px $shadow;
+  position: absolute;
+  z-index: 1;
+  scroll-behavior: smooth;
+}
+
+.list {
+  font-weight: 700;
+  font-size: 14px;
+  color: $text-color-second;
+  padding: 8px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  transition: color 0.3s, background-color 0.3s;
+
+  &:hover {
+    background-color: $bg-color-second;
+    border-radius: 0;
+  }
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

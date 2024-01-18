@@ -1,0 +1,65 @@
+@import '../../styles/variables.scss';
+
+.container {
+  border: 1px solid $border-main;
+  border-radius: 5px;
+  background-color: $white;
+  padding: 32px 16px 16px;
+
+  @media #{$desktopMedia} {
+    width: 300px;
+  }
+
+  @media #{$tabletMedia} {
+    width: 200px;
+  }
+
+  @media #{$phoneMedia} {
+    width: 170px;
+    padding: 32px 10px 16px;
+  }
+
+  &__photo {
+    display: block;
+    height: 134px;
+    margin: 0 auto 40px;
+    object-fit: cover;
+
+    @media #{$desktopMedia} {
+      width: 160px;
+    }
+  
+    @media #{$tabletMedia} {
+      width: 120px;
+    }
+  
+    @media #{$phoneMedia} {
+      width: 100px;
+      margin: 0 auto 20px;
+    }
+  }
+
+  &__header {
+    margin: 0 0 20px;
+    font-size: 24px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__block {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    border: 1px solid $border-main;
+    border-radius: 5px;
+  }
+
+  &__title {
+    font-weight: 400;
+    font-size: 14px;
+    border: 1px solid $border-main;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
