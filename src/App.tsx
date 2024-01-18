@@ -6,8 +6,7 @@ import {
 } from './api';
 import { Pokemon } from './types/Pokemon';
 import { Dropdown } from './components/Dropdown/Dropdown';
-import { PokemonCard } from './components/PokemonCard/PokemonCard';
-import { CardInformation } from './components/CardInformation/CardInformation';
+import { ContentSection } from './components/ContentSection/ContentSection';
 
 export const App: React.FC = () => {
   const [pokemon, setPokemon] = useState<Pokemon[]>([]);
@@ -48,6 +47,8 @@ export const App: React.FC = () => {
 
   const loadPokemon = async () => {
     try {
+      setIsLoading(true);
+
       const types = await getTypes();
 
       const typesWithPokemonArray = await Promise.all(
@@ -93,53 +94,22 @@ export const App: React.FC = () => {
           <h1 className="header__title">Pokedex</h1>
         </header>
 
-        <div>
-          <Dropdown
-            options={pokemonTypes.map((type) => ({ label: type, value: type }))}
-            value={selectedType}
-            onChange={(type) => handleTypeChange(type)}
-            filterByType
-            onTypeChange={(type) => handleTypeChange(type)}
-          />
-        </div>
+        <Dropdown
+          options={pokemonTypes.map((type) => ({ label: type, value: type }))}
+          value={selectedType}
+          onChange={(type) => handleTypeChange(type)}
+          filterByType
+          onTypeChange={(type) => handleTypeChange(type)}
+        />
 
-        <section className="content">
-          <div>
-            <div className="content__container">
-              {filteredPokemon.length > 0 ? (
-                <>
-                  {filteredPokemon.map((pokemons) => (
-                    <PokemonCard
-                      key={pokemons.id}
-                      pokemon={pokemons}
-                      onClick={handleCardClick}
-                    />
-                  ))}
-
-                  {errorMsg && <p className="errorMsg">{errorMsg}</p>}
-
-                  {filteredPokemon.length > 0 && (
-                    <button
-                      type="button"
-                      className="content__button"
-                      onClick={loadMore}
-                    >
-                      {isLoading ? 'Loading...' : 'Load More'}
-                    </button>
-                  )}
-                </>
-              ) : (
-                <p>Loading...</p>
-              )}
-            </div>
-          </div>
-
-          <div className="content__contain">
-            {selectedPokemon && (
-              <CardInformation selectedPokemon={selectedPokemon} />
-            )}
-          </div>
-        </section>
+        <ContentSection
+          filteredPokemon={filteredPokemon}
+          errorMsg={errorMsg}
+          isLoading={isLoading}
+          loadMore={loadMore}
+          handleCardClick={handleCardClick}
+          selectedPokemon={selectedPokemon}
+        />
       </div>
     </>
   );

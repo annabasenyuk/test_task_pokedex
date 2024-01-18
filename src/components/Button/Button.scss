@@ -1,0 +1,25 @@
+@import '../../styles/variables.scss';
+
+.content__button {
+  font-weight: 700;
+  font-size: 20px;
+  grid-column: span 3;
+  background-color: $blue;
+  color: $white;
+  border-radius: 5px;
+  height: 40px;
+  cursor: pointer;
+  border: 1px solid $border-second;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+
+  @media #{$phoneMedia} {
+    grid-column: span 1;
+  }
+
+  &:hover {
+    box-shadow: 0px 3px 13px 0px $shadow;
+    background-color: $white;
+    color: $blue;
+    border: 1px solid $white;
+  }
+}

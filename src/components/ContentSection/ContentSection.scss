@@ -1,0 +1,44 @@
+@import '../../styles/fonts.scss';
+@import '../../styles/variables.scss';
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 50px 20px 72px;
+
+  @media #{$phoneMedia} {
+    padding: 30px 10px 10px;
+  }
+
+  &__container {
+    display: grid;
+    justify-content: space-around;
+  
+    @media #{$desktopMedia} {
+      row-gap: 46px;
+      column-gap: 48px;
+    }
+  
+    @media #{$tabletMedia} {
+      row-gap: 26px;
+      column-gap: 18px;
+    }
+  }
+  
+  &__loading {
+    font-weight: 400;
+    font-size: 24px;
+    grid-column: span 3;
+  }
+  
+  &__contain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: sticky;
+    z-index: 1;
+    top: 0;
+    transform: translateY(0);
+  }
+}
